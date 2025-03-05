@@ -2,36 +2,51 @@ import { useState } from "react"
 
 function App() {
 
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, QIsOpen] = useState(false)
 
   const handleIsOpen = () => {
-    setIsOpen(true)
+      if(isOpen === false){
+        QIsOpen(true)
+      }
+      else{
+        QIsOpen(false)
+      }
   }
 
-  const handleIsCLose = () => {
-    setIsOpen(false)
-  }
+  return <>
+    <div className="flex justify-between sm:px-10 px-4 py-3">
+      <h1 className="text-4xl font-semibold text-slate-900">Logo</h1>
 
-  return <div className="flex justify-between sm:px-10 px-5 sm:py-4 py-2 bg-blue-500 sm:text-white">
-    <h1 className="text-4xl font-semibold text-white">Logo</h1>
+      <i onClick={handleIsOpen} className="fa-solid fa-bars text-4xl sm:hidden"></i>
 
-    <i style={{display: isOpen === true ? "none" : "block"}} onClick={handleIsOpen} className="fa-solid text-4xl text-white sm:hidden fa-bars"></i>
-    <i style={{display: isOpen === true ? "block" : "none"}} onClick={handleIsCLose} className="fa-solid text-4xl text-white hidden fa-x"></i>
-
-    <div id="menu" style={{display: isOpen === true ? "block" : "none"}} className="absolute top-20 sm:top-2 sm:flex hidden sm:gap-56  sm:left-[25%] ">
-
-      <ul className="flex sm:flex-row text-center flex-col sm:gap-20 gap-10 text-2xl font-semibold pt-2">
+      <ul className="sm:flex hidden gap-20 text-4xl text-slate-900 font-medium pt-1">
         <li>Home</li>
         <li>About</li>
         <li>Contact</li>
       </ul>
 
-      <div className="mt-10 sm:mt-0">
-        <button className="bg-yellow-500 px-10 py-3 rounlg text-white rounded-lg ml-10">Login</button>
-        <button className="bg-transparent border-2 border-yellow-500 px-10 py-3 rounlg text-yellow-500 sm:text-white rounded-lg ml-10">Login</button>
+      <div className="sm:flex hidden">
+        <button className="bg-slate-900 px-12 py-3 rounded-2xl text-white ml-10">Login</button>
+        <button className="bg-transparent border-2 border-slate-900 px-12 py-3 rounded-2xl text-slate-900 font-lugrasimo ml-10">Login</button>
       </div>
     </div>
-  </div>
+
+    {/* responsive menu */}
+
+    <div style={{display: isOpen === true ? "block" : ""}} className="hidden">
+      <ul className=" text-4xl space-y-10 mb-10 text-center text-slate-900 font-medium pt-1">
+        <li>Home</li>
+        <li>About</li>
+        <li>Contact</li>
+      </ul>
+
+      <div className="">
+        <button className="bg-slate-900 px-12 py-3 rounded-2xl text-white ml-10">Login</button>
+        <button className="bg-transparent border-2 border-slate-900 px-12 py-3 rounded-2xl text-slate-900 font-lugrasimo ml-10">Login</button>
+      </div>
+    </div>
+
+  </>
 }
 
 export default App
